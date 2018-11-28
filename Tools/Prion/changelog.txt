@@ -1,0 +1,13 @@
+1.3
+Cleaned up code
+Prion lite added
+Mickey mouse encryption algorithm updated (Prion lite only)
+Reorder transformation added (Prion lite only)
+Miscellaneous bug fixes
+
+1.2
+Integer splitting transformation added 
+Variable rename transformation added
+Compressed version added
+Encoding algorithm updated
+Test UI updated

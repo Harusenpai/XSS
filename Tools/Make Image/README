@@ -1,0 +1,81 @@
+=================== Make Image ====================
+- Inspired by Peter Gramantik post on Securiblob  -
+===================================================
+-                 Renaud Bidou                    -
+-            renaud@iv2-technologies.com          -
+===================================================
+
+
+Purpose
+=======
+Hide  malicious JS  code in a  PNG image. The image
+shall be  loaded by a code similar to this provided
+in the included png-xss.js file.
+
+More details on Peter Gramantik page on Securiblog.
+
+Synopsis
+========
+
+#make-image.pl <-j javascript_code|-f javascript_file> [-v] [-i image_file] [-h]
+
+-j  <code>  code to be injected
+-f  <file>  file containing JS code
+-v          verbose mode: know what you are doing...
+-i  <file>  output image file
+            default: xss.png
+-t  <0|1>   use true type (compressed code).
+            if not set code is in "cleartext" palette definition
+            default: 1
+
+Examples
+========
+
+#perl make-image.pl -j "alert('Gotcha')" -v
+
+------[       MAKE IMAGE v1.1       ]------
+
+               Renaud Bidou
+       renaud@iv2-technologies.com
+
+
+[+] Number of pixels in the image: 15
+[+] Image xss.png will be 3 x 3
+
+[+] Pixel 0: 97 (0x61) / 108 (0x6c) / 101 (0x65)
+[+] Pixel 1: 114 (0x72) / 116 (0x74) / 40 (0x28)
+[+] Pixel 2: 39 (0x27) / 71 (0x47) / 111 (0x6f)
+[+] Pixel 3: 116 (0x74) / 99 (0x63) / 104 (0x68)
+[+] Pixel 4: 97 (0x61) / 39 (0x27) / 41 (0x29)
+[+] Pixel 5: 0 (0x00) / 0 (0x00) / 0 (0x00)
+[+] Pixel 6: 0 (0x00) / 0 (0x00) / 0 (0x00)
+[+] Pixel 7: 0 (0x00) / 0 (0x00) / 0 (0x00)
+[+] Pixel 8: 0 (0x00) / 0 (0x00) / 0 (0x00)
+
+[+] xss.png created. Up to you now!
+
+
+#perl make-image.pl -f getInfo.js -v
+
+------[       MAKE IMAGE v1.1       ]------
+
+               Renaud Bidou
+       renaud@iv2-technologies.com
+
+
+[+] Number of pixels in the image: 839
+[+] Image xss.png will be 17 x 17
+
+[+] Pixel 0: 100 (0x64) / 111 (0x6f) / 99 (0x63)
+[+] Pixel 1: 117 (0x75) / 109 (0x6d) / 101 (0x65)
+[+] Pixel 2: 110 (0x6e) / 116 (0x74) / 46 (0x2e)
+[+] Pixel 3: 119 (0x77) / 114 (0x72) / 105 (0x69)
+[+] Pixel 4: 116 (0x74) / 101 (0x65) / 40 (0x28)
+[+] Pixel 5: 39 (0x27) / 60 (0x3c) / 80 (0x50)
+[+] Pixel 6: 62 (0x3e) / 39 (0x27) / 43 (0x2b)
+[... snip ...]
+
+[+] Pixel 287: 0 (0x00) / 0 (0x00) / 0 (0x00)
+[+] Pixel 288: 0 (0x00) / 0 (0x00) / 0 (0x00)
+
+[+] xss.png created. Up to you now!

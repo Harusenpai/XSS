@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4FEFE97A-D6E4-41E1-859A-E76289B4B5AE}"
+	ProjectSection(SolutionItems) = preProject
+		changelog.txt = changelog.txt
+		Prion.htm = Prion.htm
+		PrionCompressed.htm = PrionCompressed.htm
+		PrionLite.htm = PrionLite.htm
+		PrionLite.js = PrionLite.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

